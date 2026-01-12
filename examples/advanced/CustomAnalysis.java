@@ -1,5 +1,6 @@
 import com.traktite.TrakTite;
 import com.traktite.TrakTite.TrackingEntry;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class CustomAnalysis {
             // Calculate time span
             LocalDateTime first = entries.get(0).getTimestamp();
             LocalDateTime last = entries.get(entries.size() - 1).getTimestamp();
-            long seconds = java.time.Duration.between(first, last).getSeconds();
+            long seconds = Duration.between(first, last).getSeconds();
             System.out.println("\nTotal monitoring duration: " + seconds + " seconds");
         }
         

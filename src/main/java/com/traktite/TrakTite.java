@@ -35,7 +35,7 @@ public class TrakTite {
 
     /**
      * Gets all tracking entries
-     * @return List of all tracking entries
+     * @return A copy of the list of all tracking entries (modifications won't affect the original)
      */
     public List<TrackingEntry> getEntries() {
         return new ArrayList<>(entries);
