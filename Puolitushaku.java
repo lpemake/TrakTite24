@@ -36,13 +36,14 @@ public class Puolitushaku {
         Random gen = new Random();
 
         // aineiston koko
-        int n = 10000000;
+        int n = 100000000;
 
         int luvut[] = new int[n];
 
         for (int i = 0; i < luvut.length; i++) {
             luvut[i] = gen.nextInt(n);
         }
+        Arrays.sort(luvut);
 
         // etsittävä tieto
         int key = gen.nextInt(n);
@@ -58,5 +59,22 @@ public class Puolitushaku {
             System.out.println("ei löytynyt");
         System.out.println("Binäärihaku " + (stopBin-startBin));
 
+        long startLin = System.nanoTime();
+        boolean tulosLin = linearSearch(key, luvut);
+        long stopLin = System.nanoTime();
+        if (tulosLin)
+            System.out.println("löytyi");
+        else
+            System.out.println("ei löytynyt");
+        System.out.println("Lineaarinen haku " + (stopLin-startLin));        
+
+        long startJ = System.nanoTime();
+        int tulosJ = Arrays.binarySearch(luvut, key);
+        long stopJ = System.nanoTime();
+        if (tulosJ != -1)
+            System.out.println("löytyi");
+        else
+            System.out.println("ei löytynyt");
+        System.out.println("Javan oma binäärihaku " + (stopJ-startJ));        
     }
 }
