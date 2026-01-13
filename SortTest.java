@@ -39,17 +39,20 @@ public class SortTest {
         return data;
     }
     public static void main(String[] args) {
-        int size = 100;
+        int size = 100000;
 
         // create the array
         int[] data = createRandomData(size);
-        printData(data);
+        //printData(data);
 
         // lisää ajan mittaaminen (ota mallia puolitushausta)
         // sort
+        long startInsertion = System.nanoTime();
         insertionSort(data);
+        long stopInsertion = System.nanoTime();
+        System.out.println("Insertion sort " + (stopInsertion - startInsertion)/1000000000.0);
 
         // show results
-        printData(data);
+        //printData(data);
     }
 }
