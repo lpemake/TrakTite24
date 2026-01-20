@@ -73,12 +73,21 @@ public class FunctionRef {
         // nämä voisivat olla taulukossa
         FunctionPointer methodA = FunctionRef::sortMethodA;
         FunctionPointer methodB = FunctionRef::sortMethodB;
-        FunctionPointer methodC = FunctionRef::sortMethodC;
+        FunctionPointer methodC = FunctionRef::sortMethodC; 
+
+        // listan tekeminen
+        FunctionPointer[] lista = new FunctionPointer[5];
+        lista[0] = FunctionRef::sortMethodA;
+        lista[1] = FunctionRef::sortMethodB;
+
+        String[] nimet = {"Method A", "Method B", "Method C"};
         
         // ja näitä voisi kutsua silmukassa
         SortMethodTester((arr) -> sortMethodA(arr), "Method A", 100000);
         SortMethodTester(methodB, "Method B", 100000);
         SortMethodTester(methodC, "Method C", 100000);
+
+        SortMethodTester(FunctionRef::sortMethodC, "Method C", 100000);
 
         // https://www.gregorygaines.com/blog/how-to-use-function-pointers-in-java/
     }

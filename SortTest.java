@@ -27,6 +27,16 @@ public class SortTest {
         System.out.println();
     }
 
+    public static int[] createAscendingData(int n) {
+        int[] data = new int[n];
+
+        for (int i = 0; i < data.length; i++) {
+            data[i] = i;
+        }
+
+        return data;
+    }
+
     public static int[] createRandomData(int n) {
         int[] data = new int[n];
 
