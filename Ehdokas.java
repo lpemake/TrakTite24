@@ -1,4 +1,4 @@
-public class Ehdokas {
+public class Ehdokas implements Comparable<Ehdokas> {
     private String etunimi;
     private String sukunimi;
     private String puolue;
@@ -40,5 +40,15 @@ public class Ehdokas {
 
     public double getVertailuLuku() {
         return vertailuLuku;
+    }
+
+    @Override
+    public int compareTo(Ehdokas toinenEhdokas) {
+        int result = this.sukunimi.compareTo(toinenEhdokas.sukunimi);
+
+        if (result == 0)
+            result = this.etunimi.compareTo(toinenEhdokas.etunimi);
+
+        return result;
     }
 }

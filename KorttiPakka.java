@@ -35,6 +35,16 @@ public class KorttiPakka {
         Collections.shuffle(this.pakka);
     }
 
+    public void jarjesta() {
+        // maan ja arvon mukaan
+        Collections.sort(this.pakka, (k1, k2) -> {
+            int result = k1.getMaa().compareTo(k2.getMaa());
+            if (result == 0)
+                result = k1.getArvo() - k2.getArvo();
+            return result;
+        });
+    }
+
     @Override
     public String toString() {
 
