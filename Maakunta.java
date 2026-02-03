@@ -22,7 +22,7 @@ public class Maakunta {
 
     @Override
     public String toString() {
-        String s = this.nimi;
+        String s = this.nimi + '\n';
 
         for (Kunta kunta : kunnat) {
             s += kunta.toString() + '\n';

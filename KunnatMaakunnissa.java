@@ -21,19 +21,24 @@ public class KunnatMaakunnissa {
 
                 Kunta k = new Kunta(koodi, kunta, maakunta, vakiluku, pintaAla);
 
+                // lisää maakunta hajautustauluun, jos sitä ei ole vielä
+
                 if (!kunnatMaakunnissa.containsKey(maakunta)) {
                     // maakuntaa ei ole. Lisätään se hajautustauluun
-                    kunnatMaakunnissa.put(maakunta, 0);
+                    kunnatMaakunnissa.put(maakunta, new Maakunta(maakunta));
                 }
-                int lkm = kunnatMaakunnissa.get(maakunta);
-                lkm++;
-                kunnatMaakunnissa.put(maakunta, lkm);
+                // lisää kunta maakuntaan
+                Maakunta mk = kunnatMaakunnissa.get(maakunta);
+                mk.lisaaKunta(k);
             }
             reader.close();
 
-            // tulostetaan maakunnat ja kuntien lukumäärät niissä
-            for (HashMap.Entry<String, Integer> mk : kunnatMaakunnissa.entrySet()) {
-                System.out.println(mk.getKey() + " kunnat = " + mk.getValue() + " kpl");
+            // tulostetaan kunnat maakunnittain
+            for (String avain : kunnatMaakunnissa.keySet()) {
+                Maakunta mk = kunnatMaakunnissa.get(avain);
+                mk.jarjestaVakiluvunMukaan();
+                System.out.println(mk.toString());
+                System.out.println("---------------------");
             }
         }
         catch (Exception e) {
