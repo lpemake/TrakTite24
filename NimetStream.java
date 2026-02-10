@@ -12,9 +12,19 @@ public class NimetStream {
 
             Files.lines(Paths.get("names.txt")).forEach(rivi -> rivit.add(rivi));
 
+            System.out.println("PITKÄT NIMET -------------------");
+            rivit.stream()
+                .filter(s -> s.length() > 10)
+                .sorted()
+                .forEach(luku -> System.out.println(luku)); 
+                
+            // erilliset nimet
+            System.out.println("ERILLISET NIMET -------------------");
             rivit.stream()
                 .sorted()
-                .forEach(luku -> System.out.println(luku));            
+                .distinct()
+                .forEach(luku -> System.out.println(luku)); 
+
         } catch (Exception e) {
             System.out.println("Virhe: " + e.getMessage());
         }
